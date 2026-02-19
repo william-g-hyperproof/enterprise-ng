@@ -18,4 +18,19 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+  testImplementation 'org.junit.jupiter:junit-jupiter-api:5.12.1'
+  testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.12.1'
+  testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test', Test) {
+  useJUnitPlatform()
+
+  maxHeapSize = '1G'
+
+  testLogging {
+    events "passed", "skipped", "failed"
+    exceptionFormat = "full"
+    showStandardStreams = true
+  }
 }
