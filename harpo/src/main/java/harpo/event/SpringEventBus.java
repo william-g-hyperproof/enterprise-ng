@@ -8,8 +8,13 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class SpringEventBus<T extends Serializable> implements EventBus<T> {
-  @Autowired
   private Set<EventListener<T>> listeners;
+
+  public SpringEventBus(
+    @Autowired Set<EventListener<T>> listeners
+  ) {
+    this.listeners = listeners;
+  }
 
   @Override
   public boolean dispatchEvent(T event) throws Throwable {

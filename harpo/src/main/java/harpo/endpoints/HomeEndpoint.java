@@ -15,11 +15,13 @@ import harpo.event.EventBus;
 public class HomeEndpoint {
   private EventBus<DemoEvent> demoEventBus;
 
-  @Autowired
   private Broadcaster broadcaster;
 
-  @Autowired
-  public void setDemoEventBus(EventBus<DemoEvent> demoEventBus) {
+  public HomeEndpoint(
+    @Autowired Broadcaster broadcaster,
+    @Autowired EventBus<DemoEvent> demoEventBus
+  ) {
+    this.broadcaster = broadcaster;
     this.demoEventBus = demoEventBus;
   }
 
