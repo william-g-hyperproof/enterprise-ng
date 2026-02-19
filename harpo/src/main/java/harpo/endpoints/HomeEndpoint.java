@@ -1,12 +1,14 @@
 package harpo.endpoints;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import harpo.event.DemoEvent;
 import harpo.event.EventBus;
 
+@CrossOrigin
 @RestController
 public class HomeEndpoint {
   private EventBus<DemoEvent> demoEventBus;
