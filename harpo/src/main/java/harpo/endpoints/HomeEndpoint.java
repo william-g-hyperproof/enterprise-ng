@@ -23,11 +23,13 @@ public class HomeEndpoint {
     this.demoEventBus = demoEventBus;
   }
 
-	@RequestMapping("/")
-	String home() throws Throwable {
-		var event = new DemoEvent("Hello World!");
+  @RequestMapping("/")
+  String home() throws Throwable {
+    // Send via the initial event-driven bus system
+    var event = new DemoEvent("Hello World!");
     demoEventBus.dispatchEvent(event);
 
+    // Send a channel update
     Update<String> stringUpdate = new Update<String>() {
       @Override
       public String getChannel() {
@@ -41,6 +43,7 @@ public class HomeEndpoint {
     };
     broadcaster.broadcast(stringUpdate);
 
-		return "Hello World!";
-	}
+    // Respond to the HTTP request
+    return "Hello World!";
+  }
 }
