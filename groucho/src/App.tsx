@@ -1,5 +1,5 @@
 import { useCallback } from 'react'
-import './App.css'
+import './App.scss'
 
 function App() {
   const onClickButton = useCallback(async () => {
@@ -15,7 +15,7 @@ function App() {
   }, [])
 
   return (
-    <>
+    <div className='container'>
       <h1>Groucho</h1>
       <p>
         Harpo should be running at {import.meta.env.VITE_API_URL}
@@ -23,7 +23,7 @@ function App() {
       <button onClick={onClickButton}>
         Hello?
       </button>
-    </>
+    </div>
   )
 }
 
